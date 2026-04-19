@@ -4,11 +4,23 @@
   padding: 0;
 }
 
+:root {
+  --primary: #2D2620;
+  --secondary: #E8835C;
+  --accent: #D4A5A0;
+  --neutral-light: #F5F3F0;
+  --neutral-dark: #4A3F38;
+  --neutral-border: #E8DCD5;
+  --text-primary: #2D2620;
+  --text-secondary: #6B5B52;
+}
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: #f0f2f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  background: var(--neutral-light);
   padding: 0;
   margin: 0;
+  color: var(--text-primary);
 }
 
 .container {
@@ -19,81 +31,132 @@ body {
 }
 
 .header {
-  background: #1e3a8a;
-  color: white;
-  padding: 15px;
+  background: white;
+  color: var(--text-primary);
+  padding: 18px 15px;
   position: sticky;
   top: 0;
   z-index: 10;
+  border-bottom: 1px solid var(--neutral-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header h1 {
-  font-size: 22px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
 }
 
 .tabs {
   display: flex;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--neutral-border);
   background: white;
   flex-wrap: wrap;
 }
 
 .tab {
   flex: 1;
-  padding: 12px 3px;
+  padding: 14px 8px;
   text-align: center;
   background: white;
   border: none;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 500;
   cursor: pointer;
-  min-height: 60px;
+  min-height: 50px;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .tab.active {
-  color: #1e3a8a;
-  border-bottom: 4px solid #1e3a8a;
-  background: #eff6ff;
+  color: var(--secondary);
+  background: white;
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--secondary);
 }
 
 .content {
-  padding: 15px;
-  padding-bottom: 30px;
+  padding: 16px;
+  padding-bottom: 32px;
 }
 
 .btn {
-  background: #1e3a8a;
+  background: var(--secondary);
   color: white;
-  padding: 15px;
+  padding: 16px;
   border: none;
-  border-radius: 8px;
-  font-size: 18px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
   width: 100%;
   cursor: pointer;
-  margin: 5px 0;
-  min-height: 55px;
+  margin: 6px 0;
+  min-height: 52px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
 }
 
-.btn-green { background: #15803d; }
-.btn-red { background: #dc2626; }
-.btn-blue { background: #0088cc; }
-.btn-gray { background: #6b7280; }
+.btn:hover {
+  background: #D97247;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(232, 131, 92, 0.2);
+}
+
+.btn-green { background: #8BA19B; }
+.btn-green:hover { background: #7A9088; }
+
+.btn-red { background: #D4755B; }
+.btn-red:hover { background: #C4645B; }
+
+.btn-blue { background: #9BB3C8; }
+.btn-blue:hover { background: #8BA3B8; }
+
+.btn-gray { background: #B5A6A1; }
+.btn-gray:hover { background: #A59691; }
 
 .card {
   background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 15px;
+  border: 1px solid var(--neutral-border);
+  border-radius: 12px;
+  padding: 16px;
   margin: 10px 0;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(45, 38, 32, 0.08);
+  border-color: #D4C9C3;
 }
 
 input, select {
   width: 100%;
-  padding: 15px;
+  padding: 14px;
   margin: 8px 0;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
+  border: 1px solid var(--neutral-border);
+  border-radius: 10px;
   font-size: 16px;
+  background: #FAFAF9;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--secondary);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(232, 131, 92, 0.1);
 }
 
 .flex {
@@ -114,17 +177,19 @@ input, select {
 }
 
 .summary-card {
-  background: #eff6ff;
+  background: linear-gradient(135deg, #F5F3F0 0%, #EFEBE7 100%);
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 14px;
   text-align: center;
   margin: 10px 0;
+  border: 1px solid var(--neutral-border);
 }
 
 .summary-number {
   font-size: 32px;
-  font-weight: bold;
-  color: #1e3a8a;
+  font-weight: 700;
+  color: var(--secondary);
+  word-break: break-word;
 }
 
 .hidden {
@@ -138,7 +203,7 @@ input, select {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, var(--neutral-light) 0%, #EFEBE7 50%, #E8DCD5 100%);
   z-index: 9999;
   display: flex;
   flex-direction: column;
@@ -149,80 +214,92 @@ input, select {
 
 .pin-lock-card {
   background: white;
-  border-radius: 20px;
-  padding: 30px 20px;
+  border-radius: 24px;
+  padding: 32px 24px;
   width: 100%;
-  max-width: 350px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  max-width: 360px;
+  box-shadow: 0 20px 50px rgba(45, 38, 32, 0.12);
+  border: 1px solid var(--neutral-border);
 }
 
 .pin-title {
   text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  color: #1e3a8a;
-  margin-bottom: 10px;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
 }
 
 .pin-dots {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin: 20px 0 30px;
+  gap: 14px;
+  margin: 24px 0 28px;
 }
 
 .pin-dot {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #e5e7eb;
-  transition: all 0.2s;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: #E8DCD5;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .pin-dot.filled {
-  background: #1e3a8a;
-  transform: scale(1.2);
+  background: var(--secondary);
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(232, 131, 92, 0.3);
 }
 
 .pin-keypad {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  margin-top: 10px;
+  gap: 12px;
+  margin: 20px 0;
 }
 
 .pin-key {
   aspect-ratio: 1;
-  background: #f3f4f6;
-  border: none;
-  border-radius: 60px;
-  font-size: 32px;
-  font-weight: bold;
-  color: #1e3a8a;
+  background: var(--neutral-light);
+  border: 1px solid #EBE2DB;
+  border-radius: 16px;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text-primary);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.1s;
-  min-height: 70px;
+  transition: all 0.15s ease;
+  min-height: 66px;
+  box-shadow: 0 2px 4px rgba(45, 38, 32, 0.04);
+}
+
+.pin-key:hover {
+  background: #F5F1ED;
 }
 
 .pin-key:active {
-  background: #d1d5db;
-  transform: scale(0.95);
+  background: #E8DCD5;
+  transform: scale(0.94);
+  box-shadow: 0 1px 2px rgba(45, 38, 32, 0.08);
 }
 
 .pin-key.delete {
-  background: #fee2e2;
-  color: #dc2626;
-  font-size: 24px;
+  background: #FBF1F0;
+  color: var(--secondary);
+  font-size: 22px;
+  border-color: #F5D7CE;
 }
 
 .pin-error {
-  color: #dc2626;
+  color: var(--secondary);
   text-align: center;
-  margin-top: 15px;
-  min-height: 24px;
+  margin-bottom: 12px;
+  min-height: 20px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .logout-btn {
@@ -390,52 +467,58 @@ input:checked + .slider:before {
 /* ============================================ */
 
 .badge {
-  background: #dc2626;
+  background: var(--secondary);
   color: white;
-  border-radius: 20px;
-  padding: 2px 8px;
-  font-size: 12px;
-  margin-left: 5px;
-  font-weight: bold;
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 11px;
+  margin-left: 6px;
+  font-weight: 600;
 }
 
 .request-item {
-  background: #fef3c7;
-  padding: 15px;
+  background: #FEF8F5;
+  padding: 16px;
   margin: 10px 0;
-  border-radius: 8px;
-  border-left: 4px solid #f59e0b;
+  border-radius: 12px;
+  border-left: 4px solid var(--secondary);
+  border: 1px solid var(--neutral-border);
+  border-left: 4px solid var(--secondary);
 }
 
 /* Product Stats Cards */
 .stat-card {
   color: white;
-  border-radius: 12px;
-  padding: 15px 10px;
+  border-radius: 14px;
+  padding: 18px 12px;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(45, 38, 32, 0.08);
+  font-weight: 600;
 }
 
 /* Empty State */
 .empty-state {
   text-align: center;
   padding: 60px 20px;
-  color: #9ca3af;
+  color: var(--text-secondary);
 }
 
 .empty-state-icon {
-  font-size: 64px;
+  font-size: 56px;
   margin-bottom: 16px;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .empty-state-text {
-  font-size: 18px;
+  font-size: 17px;
   margin-bottom: 8px;
+  color: var(--text-primary);
+  font-weight: 500;
 }
 
 .empty-state-subtext {
   font-size: 14px;
+  color: var(--text-secondary);
 }
 /* ============================================ */
 /* MODERN PIN LOCK SCREEN                       */
