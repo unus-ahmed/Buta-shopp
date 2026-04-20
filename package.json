@@ -1,7 +1,7 @@
 {
-  "name": "buta-shop-react",
+  "name": "buta-shopp",
+  "version": "0.0.0",
   "private": true,
-  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,8 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.0",
     "pouchdb": "^7.3.0",
     "pouchdb-find": "^7.3.0",
